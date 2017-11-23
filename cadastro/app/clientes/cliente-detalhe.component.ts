@@ -11,6 +11,7 @@ import { ClienteService } from './cliente.service';
 })
 export class ClienteDetalheComponent implements OnInit {
     cliente: Cliente;
+    private isNovo: boolean=true;
 
     constructor (
         private clienteService: ClienteService,
@@ -25,6 +26,9 @@ export class ClienteDetalheComponent implements OnInit {
             let id: number = +params['id'];
 
             if (id){
+
+                this.isNovo = false;
+
                 this.clienteService.getCliente(id)
                 .then((cliente: Cliente)=>{
                     console.log(cliente)
@@ -47,6 +51,14 @@ export class ClienteDetalheComponent implements OnInit {
             'form-control': true,
             'has-danger': !isValid && !isPristine,
             'has-success': isValid && !isPristine
+        }
+    }
+
+    onSubmit():void{
+        if (this.isNovo){
+            console.log('cadastrar')
+        }else{
+            console.log('alterar')
         }
     }
 }
