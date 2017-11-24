@@ -55,10 +55,15 @@ export class ClienteDetalheComponent implements OnInit {
     }
 
     onSubmit():void{
+        let promise;
+
         if (this.isNovo){
             console.log('cadastrar')
+            promise = this.clienteService.create(this.cliente)
         }else{
             console.log('alterar')
         }
+        
+        promise.then(cliente=>this.location.back())
     }
 }
