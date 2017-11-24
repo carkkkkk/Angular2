@@ -16,8 +16,12 @@ export class ClienteService{
     ){}
 
     getClientes() : Promise<Cliente[]>  {
-        return this.http.get(this.clientesUrl).toPromise()
+
+        return this.http.get(this.clientesUrl)
+                    .toPromise()
                     .then(response => response.json().data as Cliente[])
+
+        //return Promise.resolve(CLIENTES);       
     }
 
     getCliente(id: number): Promise<Cliente> {
