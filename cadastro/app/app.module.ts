@@ -8,6 +8,8 @@ import {HttpModule} from '@angular/http'
 import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './in-memory-data.service';
 
+import {DialogConfirmService} from './dialogconfirm.service'
+
 @NgModule({
     imports : [
         AppRoutingModule,
@@ -17,6 +19,9 @@ import {InMemoryDataService} from './in-memory-data.service';
         InMemoryWebApiModule.forRoot(InMemoryDataService)
     ],
     declarations :[AppComponent],
+    providers:[
+        DialogConfirmService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

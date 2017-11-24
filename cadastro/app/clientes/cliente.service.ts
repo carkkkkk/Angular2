@@ -44,4 +44,22 @@ export class ClienteService{
         })
         .catch(this.trataErro)
     }
+
+    update(cliente: Cliente): Promise<Cliente> {
+        const url = `${this.clientesUrl}/${cliente.id}`
+
+        return this.http.put(url, JSON.stringify(cliente), {headers:this.headers})
+        .toPromise()
+        .then(() => cliente as Cliente)
+        .catch(this.trataErro)
+    }
+
+    delete(cliente: Cliente): Promise<Cliente> {
+        const url = `${this.clientesUrl}/${cliente.id}`
+
+        return this.http.delete(url, {headers:this.headers})
+        .toPromise()
+        .then(() => cliente as Cliente)
+        .catch(this.trataErro)
+    }
 }

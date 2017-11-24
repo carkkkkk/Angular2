@@ -61,7 +61,7 @@ export class ClienteDetalheComponent implements OnInit {
             console.log('cadastrar')
             promise = this.clienteService.create(this.cliente)
         }else{
-            console.log('alterar')
+            promise = this.clienteService.update(this.cliente)
         }
         
         promise.then(cliente=>this.location.back())
